@@ -1,0 +1,24 @@
+name: Deploy to SEOhost via FTP
+
+on:
+  push:
+    branches:
+      - main  # Uruchom po zmianach na gałęzi main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Pobierz kod z repozytorium
+
+      - name: Deploy to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./  # Folder lokalny do wysłania
+          server-dir: /  # Folder na serwerze
+          log-level: standard  # Logi dla debugowania
