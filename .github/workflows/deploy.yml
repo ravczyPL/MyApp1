@@ -31,4 +31,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Poprawiony parametr
           script: |
-            echo "Deployment complete!"
+            echo "Deployment complete."
