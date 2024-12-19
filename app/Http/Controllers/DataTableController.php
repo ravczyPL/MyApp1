@@ -17,6 +17,7 @@ class DataTableController extends Controller
             ['John Doe', 'johndoe@example.com', 'Manager', '2024-12-19'],
             ['Jane Smith', 'janesmith@example.com', 'Developer', '2023-08-14'],
             ['Tom Brown', 'tombrown@example.com', 'Designer', '2022-11-10'],
+            ['Rafal Lesinski', 'rafal@lesinski.it', 'Administrator', '2013-11-10'],
         ];
 
         return response()->json($data, 200);
