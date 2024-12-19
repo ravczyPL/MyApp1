@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Poprawiony parametr
           source: ./  # Folder lokalny do wysłania
-          target: /home/srv57751/domains/myapp1.lesinski.it/public_html/  # Docelowy folder na serwerze
+          target: domains/myapp1.lesinski.it/public_html/  # Docelowy folder na serwerze
 
       - name: Execute commands on the server
         uses: appleboy/ssh-action@master
