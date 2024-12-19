@@ -36,21 +36,26 @@
     <script>
     $(document).ready(function () {
         $('#example').DataTable({
-            ajax: '{{ route("datagrid.data") }}', // Trasa do danych
+            ajax: {
+                url: '{{ route("datagrid.data") }}',
+                type: 'GET',
+                dataSrc: '',
+                error: function (xhr, error, thrown) {
+                    console.error('Błąd ładowania danych AJAX:', xhr.responseText);
+                }
+            },
             columns: [
-                { data: 0 }, // Imię i nazwisko
-                { data: 1 }, // Email
-                { data: 2 }, // Stanowisko
-                { data: 3 }  // Data
+                { data: 0 }, // Pierwsza kolumna: Imię i nazwisko
+                { data: 1 }, // Druga kolumna: Email
+                { data: 2 }, // Trzecia kolumna: Stanowisko
+                { data: 3 }  // Czwarta kolumna: Data
             ],
             responsive: true,
-            pageLength: 10,
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pl.json' // Polskie tłumaczenie
-            }
+            pageLength: 10
         });
     });
 </script>
+
 
 </body>
 </html>

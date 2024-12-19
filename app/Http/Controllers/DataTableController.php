@@ -19,6 +19,6 @@ class DataTableController extends Controller
             ['Tom Brown', 'tombrown@example.com', 'Designer', '2022-11-10'],
         ];
 
-        return response()->json($data);
+        return response()->json($data, 200);
     }
 }
