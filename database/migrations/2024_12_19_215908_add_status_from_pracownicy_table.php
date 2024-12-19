@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('pracownicy', function (Blueprint $table) {
-            $table->enum('status', ['zwolniony', 'zatrudniony', 'umowa b2b'])->default('zatrudniony')->after('name');
+            $table->enum('status', ['zwolniony', 'zatrudniony', 'umowa b2b'])->default('zatrudniony')->after('wynagrodzenie');
         });
     }
 
