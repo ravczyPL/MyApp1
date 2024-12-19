@@ -1,4 +1,4 @@
-name: Deploy to SEOhost via FTP
+name: Deploy to SEOhost via SSH
 
 on:
   push:
@@ -6,19 +6,29 @@ on:
       - main  # Uruchom po zmianach na gałęzi main
 
 jobs:
-  ftp-deploy:
+  ssh-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4  # Pobierz kod z repozytorium
 
-      - name: Deploy to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: Copy files to server via SSH
+        uses: appleboy/scp-action@v0.1.8
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./  # Folder lokalny do wysłania
-          server-dir: /  # Folder na serwerze
-          log-level: standard  # Logi dla debugowania
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key_passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          source: ./  # Folder lokalny do wysłania
+          target: /home/srv57751/domains/myapp1.lesinski.it/public_html
+
+      - name: Execute commands on the server
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key_passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          script: |
+            echo "Deployment complete!"
