@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Poprawiony parametr
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Jeśli klucz ma hasło
           source: ./  # Folder lokalny do wysłania
           target: ${{ secrets.SSH_TARGET }}  # Docelowy folder na serwerze
 
@@ -29,6 +29,12 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Poprawiony parametr
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }} # Jeśli klucz ma hasło
           script: |
+            echo "Starting deployment process"
+            cd ${{ secrets.SSH_TARGET }}
+            composer install --no-dev --optimize-autoloader
+            php artisan config:cache
+            php artisan route:cache
+            php artisan migrate --force
             echo "Deployment complete!"
