@@ -19,7 +19,7 @@ class CreatePracownicyTable extends Migration
             $table->string('nazwisko'); // Kolumna na nazwisko
             $table->string('email')->unique(); // Kolumna na email (unikalna)
             $table->string('telefon')->nullable(); // Opcjonalna kolumna na telefon
-            $table->date('data_zatrudnienia'); // Data zatrudnienia
+            $table->date('zatrudnienie'); // Data zatrudnienia
             $table->decimal('wynagrodzenie', 10, 2); // Wynagrodzenie (z dokładnością do 2 miejsc po przecinku)
             $table->timestamps(); // Automatyczne kolumny `created_at` i `updated_at`
         });
