@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Nowoczesny Datagrid z Laravel</h2>
+        <h2 class="mb-4">Data grid Laravel</h2>
         <table id="example" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -51,7 +51,10 @@
                 { data: 3 }  // Czwarta kolumna: Data
             ],
             responsive: true,
-            pageLength: 10
+            pageLength: 10,
+            language: {
+                url: '/assets/i18n/pl.json' // Ścieżka do lokalnego pliku tłumaczenia
+            }
         });
     });
 </script>
