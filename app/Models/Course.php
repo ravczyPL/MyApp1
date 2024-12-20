@@ -16,5 +16,6 @@ class Course extends Model
         'price',
         'duration',
         'start_date',
+        'promocja',
     ];
 }
