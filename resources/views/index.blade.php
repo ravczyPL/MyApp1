@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        const menuPosition = 'left'; // Zmienna określająca położenie menu ('left' lub 'right')
+        const menuPosition = 'left'; // Zmienna określająca położenie ('left' lub 'right')
     </script>
     <div class="menu" id="menu">
         <div class="menu-tab">Menu</div>
