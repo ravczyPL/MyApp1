@@ -12,10 +12,21 @@
     </script>
     <div class="menu" id="menu">
         <div class="menu-tab">Menu</div>
-        <ul>
-            <li><a href="#">O mnie</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Kontakt</a></li>
+        <ul class="menu-list">
+            @foreach($menuItems->where('parent_id', null) as $parentItem)
+                <li class="menu-item">
+                    <a href="{{ $parentItem->url }}">{{ $parentItem->title }}</a>
+                    @if($menuItems->where('parent_id', $parentItem->id)->count())
+                        <ul class="submenu-list">
+                            @foreach($menuItems->where('parent_id', $parentItem->id) as $childItem)
+                                <li class="submenu-item">
+                                    <a href="{{ $childItem->url }}">{{ $childItem->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
         </ul>
     </div>
 
