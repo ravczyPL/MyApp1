@@ -7,15 +7,24 @@ body {
 .menu {
     position: fixed;
     top: 0;
-    right: 0; /* Zmieniono z left na right */
     width: 250px;
     height: 100%;
     background-color: #333;
     color: white;
-    transform: translateX(100%); /* Zmieniono z translateX(-100%) na translateX(100%) */
     transition: transform 0.3s ease;
 }
-.menu.active {
+.menu.left {
+    left: 0;
+    transform: translateX(-100%);
+}
+.menu.left.active {
+    transform: translateX(0);
+}
+.menu.right {
+    right: 0;
+    transform: translateX(100%);
+}
+.menu.right.active {
     transform: translateX(0);
 }
 .menu ul {
@@ -34,7 +43,6 @@ body {
 .menu-tab {
     position: absolute;
     top: 50%;
-    left: -50px; /* Zakładka wystaje na lewo od menu */
     width: 50px;
     height: 30px;
     background-color: #333;
@@ -44,4 +52,10 @@ body {
     cursor: pointer;
     transform: rotate(-90deg);
     transform-origin: left top;
+}
+.menu.left .menu-tab {
+    left: -50px;
+}
+.menu.right .menu-tab {
+    right: -50px;
 }

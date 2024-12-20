@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-    <div class="menu">
-        <div class="menu-tab">Menu</div> <!-- Dodano zakładkę -->
+    <script>
+        const menuPosition = 'left'; // Zmienna określająca położenie menu ('left' lub 'right')
+    </script>
+    <div class="menu" id="menu">
+        <div class="menu-tab">Menu</div>
         <ul>
             <li><a href="#">O mnie</a></li>
             <li><a href="#">Blog</a></li>
@@ -17,10 +20,19 @@
     </div>
 
     <script>
-        const menu = document.querySelector('.menu');
+        const menu = document.getElementById('menu');
+
+        // Ustawienie odpowiedniej klasy na podstawie zmiennej menuPosition
+        if (menuPosition === 'right') {
+            menu.classList.add('right');
+        } else if (menuPosition === 'left') {
+            menu.classList.add('left');
+        }
 
         document.addEventListener('mousemove', (e) => {
-            if (e.clientX >= window.innerWidth - 10) { // Sprawdza, czy myszka jest blisko prawej krawędzi
+            if (menuPosition === 'right' && e.clientX >= window.innerWidth - 10) {
+                menu.classList.add('active');
+            } else if (menuPosition === 'left' && e.clientX <= 10) {
                 menu.classList.add('active');
             }
         });
