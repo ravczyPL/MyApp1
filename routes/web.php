@@ -15,7 +15,7 @@ use App\Http\Controllers\DataTableController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // Route for displaying the datagrid view
