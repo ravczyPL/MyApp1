@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataTableController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,7 @@ use App\Http\Controllers\DataTableController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [MenuController::class, 'index']);
 
 // Route for displaying the datagrid view
 Route::get('/datagrid', [DataTableController::class, 'index'])->name('datagrid.index');
