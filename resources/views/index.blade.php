@@ -12,10 +12,16 @@
     </script>
     <div class="menu" id="menu">
         <div class="menu-tab">Menu</div>
-        <ul>
-            <li><a href="#">O mnie</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Kontakt</a></li>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#">O mnie</a>
+                <ul class="submenu-list">
+                    <li class="submenu-item"><a href="#">Podmenu 1</a></li>
+                    <li class="submenu-item"><a href="#">Podmenu 2</a></li>
+                </ul>
+            </li>
+            <li class="menu-item"><a href="#">Blog</a></li>
+            <li class="menu-item"><a href="#">Kontakt</a></li>
         </ul>
     </div>
 
